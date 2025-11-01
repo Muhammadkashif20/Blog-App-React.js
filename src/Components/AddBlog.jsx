@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./Footer";
 
 const AddBlog = () => {
   return (
@@ -81,7 +82,7 @@ const AddBlog = () => {
           <div className="text-center">
             <button
               type="button"
-              className="px-10 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+              className="px-10 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg cursor-pointer"
             >
               Publish Blog 🚀
             </button>

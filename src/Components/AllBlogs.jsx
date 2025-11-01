@@ -1,6 +1,5 @@
 import React from "react";
 import BlogCard from "./BlogCard";
-import Footer from "./Footer";
 
 const blogs = [
   {
@@ -47,7 +46,6 @@ const AddBlog = () => {
           ))}
         </div>
       </div>
-      <Footer/>
     </section>
   );
 };

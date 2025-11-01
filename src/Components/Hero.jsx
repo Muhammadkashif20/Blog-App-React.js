@@ -12,7 +12,7 @@ const Hero = () => {
           Explore trending articles from top creators every day.
         </p>
         <Link to={"add-blog"}>
-        <button className="bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg font-medium transition-all">
+        <button className="bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg font-medium transition-all cursor-pointer">
           Add Your Blogs
         </button>
         </Link>

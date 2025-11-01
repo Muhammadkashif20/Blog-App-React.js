@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const About = () => {
   return (
     <section className="min-h-screen bg-gray-50 flex items-center justify-center px-6 py-16">
@@ -63,9 +63,11 @@ const About = () => {
 
         {/* Join Us Section */}
         <div className="text-center mt-12">
+            <Link to={"/"}>
           <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-all duration-300">
             Join Our Community 🚀
           </button>
+            </Link>
         </div>
       </div>
     </section>

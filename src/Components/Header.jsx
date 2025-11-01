@@ -12,12 +12,18 @@ const Header = () => {
         {/* Navigation Links */}
         <nav className="hidden md:flex space-x-8 text-sm font-medium">
           <Link
-            to={"/home"}
+            to={"/"}
             className="hover:text-indigo-400 transition-colors duration-200"
           >
             Home
           </Link>
           <Link
+            to={"/all-blogs"}
+            className="hover:text-indigo-400 transition-colors duration-200"
+          >
+            Blogs
+          </Link>
+           <Link
             to={"/add-blog"}
             className="hover:text-indigo-400 transition-colors duration-200"
           >
@@ -28,12 +34,6 @@ const Header = () => {
             className="hover:text-indigo-400 transition-colors duration-200"
           >
             About
-          </Link>
-          <Link
-            to={"/contact"}
-            className="hover:text-indigo-400 transition-colors duration-200"
-          >
-            Contact
           </Link>
         </nav>
 

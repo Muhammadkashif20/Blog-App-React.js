@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <section className="bg-gray-950 text-white py-20 px-6">
@@ -11,9 +11,11 @@ const Hero = () => {
           A modern blogging platform where creativity meets clarity.  
           Explore trending articles from top creators every day.
         </p>
+        <Link to={"add-blog"}>
         <button className="bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg font-medium transition-all">
-          Start Reading
+          Add Your Blogs
         </button>
+        </Link>
       </div>
     </section>
   );

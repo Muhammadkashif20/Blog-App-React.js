@@ -1,5 +1,5 @@
 import React from "react";
-import AddBlog from "./components/AddBlog";
+import AddBlog from "./Components/AddBlog";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import Header from "./Components/Header";

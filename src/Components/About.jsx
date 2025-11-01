@@ -64,7 +64,7 @@ const About = () => {
         {/* Join Us Section */}
         <div className="text-center mt-12">
             <Link to={"/"}>
-          <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-all duration-300">
+          <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-all duration-300 cursor-pointer">
             Join Our Community 🚀
           </button>
             </Link>

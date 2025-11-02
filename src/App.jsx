@@ -10,7 +10,7 @@ const App = () => {
    const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
+    const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -27,7 +27,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home/>}></Route>
       <Route path="/add-blog" element={<AddBlog/>}></Route>
-      <Route path="/all-blogs" element={<AllBlogs/>}></Route>
+      <Route path="/all-blogs" element={<AllBlogs/>} ></Route>
       <Route path="/about" element={<About/>}></Route>
     </Routes>
     </div>

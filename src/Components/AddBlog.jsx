@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Spin } from "antd";
 import Footer from "./Footer";
 
-
 const AddBlog = () => {
   const [loading, setLoading] = useState(true);
   const [blogTitle, setBlogTitle] = useState("");
-  let blogHeading=blogTitle
   const [description, setDescription] = useState("");
-  let blogDesc=description
   const [imageUrl, setImageUrl] = useState("");
-  let blogImg=imageUrl
   const [category, setCategory] = useState("");
-  let blogCategory=category
+
+  let blogHeading = blogTitle;
+  let blogDesc = description;
+  let blogImg = imageUrl;
+  let blogCategory = category;
+
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
@@ -26,31 +27,51 @@ const AddBlog = () => {
     );
   }
 
-  const handleTitle =(e)=>{
-    // console.log("blog-title=>",e.target.value)
-    setBlogTitle(e.target.value)
-    console.log("blog-title=>",blogTitle)
-  }
-    const handleDesc =(e)=>{
-    // console.log("blog-title=>",e.target.value)
-    setDescription(e.target.value)
-    console.log("blog-desc=>",blogDesc)
-  }
-      const handleImg =(e)=>{
-    // console.log("blog-title=>",e.target.value)
-    setImageUrl(e.target.value)
-    console.log("blog-img=>",blogImg)
-  }
-     const handleCategory =(e)=>{
-    // console.log("blog-title=>",e.target.value)
-    setCategory(e.target.value)
-    console.log("blog-img=>",blogCategory)
-  }
-// Funtionality to handle form submission
-const handleSubmit = ()=>{
-console.log("title=>",blogHeading)
-}
-  
+  const handleTitle = (e) => {
+    setBlogTitle(e.target.value);
+    console.log("blog-title=>", blogTitle);
+  };
+
+  const handleDesc = (e) => {
+    setDescription(e.target.value);
+    console.log("blog-desc=>", description);
+  };
+
+  const handleImg = (e) => {
+    setImageUrl(e.target.value);
+    console.log("blog-img=>", imageUrl);
+  };
+
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+    console.log("blog-category=>", category);
+  };
+
+  // Funtionality to handle form submission
+  const blogObj = [
+    {
+      title: blogHeading,
+      description: blogDesc,
+      image: blogImg,
+      category: blogCategory,
+    },
+  ];
+
+  const handleSubmit = () => {
+    console.log("BlogObject=>", blogObj);
+    const setBlogData = localStorage.setItem(
+      "blogObj",
+      JSON.stringify(blogObj)
+    );
+    const getBlogData = localStorage.getItem("blogObj");
+    getBlogData.push(setBlogData)
+    console.log("blog-data=>", getBlogData);
+    setBlogTitle("")
+    setCategory("")
+    setDescription("")
+    setImageUrl("")
+  };
+
   return (
     <>
       <section className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-100 py-16 px-6 flex items-center justify-center">
@@ -67,7 +88,7 @@ console.log("title=>",blogHeading)
           <form className="space-y-8">
             {/* Blog Title */}
             <div>
-            <label className="block text-gray-700 mb-2 font-medium">
+              <label className="block text-gray-700 mb-2 font-medium">
                 Blog Title
               </label>
               <input
@@ -112,7 +133,10 @@ console.log("title=>",blogHeading)
               <label className="block text-gray-700 mb-2 font-medium">
                 Category
               </label>
-              <select onChange={handleCategory} className="w-full px-5 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition">
+              <select
+                onChange={handleCategory}
+                className="w-full px-5 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
+              >
                 <option value="">Select Category</option>
                 <option value="technology">Technology</option>
                 <option value="design">Design</option>

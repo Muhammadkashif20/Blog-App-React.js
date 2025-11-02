@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
+import { Spin } from "antd";
 
 const AddBlog = () => {
+  const [loading , setLoading]=useState(true);
+  useEffect(()=>{
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
+  })
+      if(loading){
+      return (
+        <div className="flex items-center justify-center h-screen bg-white">
+          <Spin size="large" />
+        </div>  
+      );
+    }
   return (
     <section className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-100 py-16 px-6 flex items-center justify-center">
+      
       <div className="bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl p-10 w-full max-w-3xl border border-gray-200">
         {/* Header */}
         <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-4">

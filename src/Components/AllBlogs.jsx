@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
+import { Spin } from "antd";
 
 const blogs = [
   {
@@ -41,6 +42,18 @@ const blogs = [
 ];
 
 const AllBlogs = () => {
+    const [loading , setLoading]=useState(true);
+  useEffect(()=>{
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
+  })
+      if(loading){
+      return (
+        <div className="flex items-center justify-center h-screen bg-white">
+          <Spin size="large" />
+        </div>  
+      );
+    }
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-6 text-center">

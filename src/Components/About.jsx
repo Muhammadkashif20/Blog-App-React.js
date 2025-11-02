@@ -1,10 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Spin } from "antd";
+import React, { useEffect, useState } from "react";
 const About = () => {
+    const [loading , setLoading]=useState(true);
+  useEffect(()=>{
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
+  })
+      if(loading){
+      return (
+        <div className="flex items-center justify-center h-screen bg-white">
+          <Spin size="large" />
+        </div>  
+      );
+    }
   return (
     <section className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-100 flex items-center justify-center px-6 py-16">
       <div className="max-w-5xl bg-white shadow-xl rounded-2xl p-10 md:p-16">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
+        <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-6">
           👋 About <span className="text-indigo-500">Our Blog</span>
         </h2>
 
@@ -63,11 +75,9 @@ const About = () => {
 
         {/* Join Us Section */}
         <div className="text-center mt-12">
-            <Link to={"/"}>
           <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-all duration-300 cursor-pointer">
             Join Our Community 🚀
           </button>
-            </Link>
         </div>
       </div>
     </section>

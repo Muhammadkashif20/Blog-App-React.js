@@ -11,7 +11,6 @@ const Home = () => {
           console.log("Blog App Loaded");
         },[])
       }
-         {/* Landing Page */}
       <Hero />
       <BlogList />
       <Footer />

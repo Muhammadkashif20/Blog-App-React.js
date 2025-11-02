@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <header className="bg-gray-900 text-white shadow-md z-50 sticky top-0">
+    <header className="bg-gray-900 opacity-95 text-white shadow-md z-50 sticky top-0">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <h1 className="text-2xl font-bold tracking-wide hover:text-indigo-400 cursor-pointer">

@@ -59,13 +59,11 @@ const AddBlog = () => {
 
   const handleSubmit = () => {
     console.log("BlogObject=>", blogObj);
-    const setBlogData = localStorage.setItem(
-      "blogObj",
-      JSON.stringify(blogObj)
-    );
-    const getBlogData = localStorage.getItem("blogObj");
-    getBlogData.push(setBlogData)
+    const getBlogData = JSON.parse(localStorage.getItem("blogObj") || []);
+    let newData=getBlogData.push(blogObj)
+    const setBlogData = localStorage.setItem("blogObj",JSON.stringify(getBlogData));
     console.log("blog-data=>", getBlogData);
+
     setBlogTitle("")
     setCategory("")
     setDescription("")

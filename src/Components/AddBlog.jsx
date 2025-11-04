@@ -8,6 +8,7 @@ const AddBlog = () => {
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [category, setCategory] = useState("");
+  const [author, setAuthor] = useState("");
 
   let blogHeading = blogTitle;
   let blogDesc = description;
@@ -30,7 +31,6 @@ const AddBlog = () => {
   const handleTitle = (e) => {
     setBlogTitle(e.target.value);
     console.log("blog-title=>", blogTitle);
-
   };
 
   const handleDesc = (e) => {
@@ -50,27 +50,30 @@ const AddBlog = () => {
 
   // Funtionality to handle form submission
   const blogObj = {
-      title: blogHeading,
-      description: blogDesc,
-      image: blogImg,
-      category: blogCategory,
-    };
-  
+    title: blogHeading,
+    description: blogDesc,
+    image: blogImg,
+    category: blogCategory,
+    date: new Date().toLocaleDateString(),
+  };
 
   const handleSubmit = () => {
     console.log("BlogObject=>", blogObj);
 
     const getBlogData = JSON.parse(localStorage.getItem("blogObj"));
-    let newData=getBlogData.push(blogObj)
+    let newData = getBlogData.push(blogObj);
 
-    const setBlogData = localStorage.setItem("blogObj",JSON.stringify(getBlogData));
+    const setBlogData = localStorage.setItem(
+      "blogObj",
+      JSON.stringify(getBlogData)
+    );
     console.log("blog-data=>", getBlogData);
-  // Clear Input's
+    // Clear Input's
 
-  setBlogTitle("");
-  setDescription("");
-  setImageUrl("");
-  setCategory("");
+    setBlogTitle("");
+    setDescription("");
+    setImageUrl("");
+    setCategory("");
   };
 
   return (
@@ -87,6 +90,19 @@ const AddBlog = () => {
 
           {/* Form */}
           <form className="space-y-8">
+             {/* Author Name */}
+            <div>
+              <label className="block text-gray-700 mb-2 font-medium">
+                Author Name
+              </label>
+              <input
+                type="text"
+                onChange={(e) => setAuthor(e.target.value)}
+                placeholder="Enter author name..."
+                className="w-full px-5 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
+              />
+            </div>
+
             {/* Blog Title */}
             <div>
               <label className="block text-gray-700 mb-2 font-medium">
@@ -160,29 +176,50 @@ const AddBlog = () => {
           </form>
 
           {/* Preview Section */}
-          <div className="mt-14 border-t pt-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-5 text-center">
-              Live Preview ✨
-            </h3>
-            <div className="bg-gray-100 rounded-xl p-6 shadow-inner">
-              <h4 className="text-xl font-bold text-indigo-600 mb-2">
-                Sample Blog Title
-              </h4>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                vitae lorem vel libero aliquet ultricies. Integer tincidunt
-                iaculis mi, sed eleifend justo.
-              </p>
-              <img
-                src="https://via.placeholder.com/600x300"
-                alt="Preview"
-                className="rounded-xl w-full h-64 object-cover shadow-md"
-              />
-              <p className="mt-3 text-sm text-gray-500 text-right">
-                Category: <span className="font-medium">Technology</span>
-              </p>
-            </div>
-          </div>
+<div className="mt-14 border-t pt-8">
+  <h3 className="text-2xl font-bold text-gray-800 mb-5 text-center">
+    Live Preview ✨
+  </h3>
+
+  <div className="bg-gray-100 rounded-xl p-6 shadow-inner">
+    {/* Blog Header Info */}
+    <div className="flex items-center justify-end mb-4 text-sm text-gray-600">
+      <p>
+        🏷️ <span className="font-medium text-indigo-600">Technology</span>
+      </p>
+    </div>
+
+    {/* Blog Title */}
+    <h4 className="text-2xl font-bold text-indigo-700 mb-3">
+      Sample Blog Title
+    </h4>
+
+    {/* Blog Description */}
+    <p className="text-gray-700 leading-relaxed mb-5">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lorem
+      vel libero aliquet ultricies. Integer tincidunt iaculis mi, sed eleifend
+      justo. Duis non ligula non nunc malesuada interdum non nec velit.
+    </p>
+
+    {/* Blog Image */}
+    <img
+      src="https://via.placeholder.com/600x300"
+      alt="Preview"
+      className="rounded-xl w-full h-64 object-cover shadow-md mb-4"
+    />
+
+    {/* Footer Info */}
+    <div className="flex items-center justify-between text-sm text-gray-500">
+      <p>
+        ✍️ Written by <span className="font-medium text-gray-800">John Doe</span>
+      </p>
+      <p>
+        🕒 Published on <span className="font-medium text-gray-800">Oct 31, 2025</span>
+      </p>
+    </div>
+  </div>
+</div>
+
         </div>
       </section>
 

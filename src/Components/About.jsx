@@ -1,5 +1,6 @@
 import { Spin } from "antd";
 import React, { useEffect, useState } from "react";
+import Footer from "./Footer";
 const About = () => {
     const [loading , setLoading]=useState(true);
   useEffect(()=>{
@@ -14,6 +15,7 @@ const About = () => {
       );
     }
   return (
+    <>
     <section className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-100 flex items-center justify-center px-6 py-16">
       <div className="max-w-5xl bg-white shadow-xl rounded-2xl p-10 md:p-16">
         <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-6">
@@ -81,6 +83,8 @@ const About = () => {
         </div>
       </div>
     </section>
+    <Footer/>
+    </>
   );
 };
 

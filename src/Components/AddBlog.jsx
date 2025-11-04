@@ -28,6 +28,11 @@ const AddBlog = () => {
     );
   }
 
+  const handleAuthor = (e) => {
+    setAuthor(e.target.value);
+    console.log("blog-author=>", author);
+  };
+
   const handleTitle = (e) => {
     setBlogTitle(e.target.value);
     console.log("blog-title=>", blogTitle);
@@ -49,12 +54,16 @@ const AddBlog = () => {
   };
 
   // Funtionality to handle form submission
+  let today=new Date();
+  let NewDate=`${today.getDate()}-${today.getMonth()+1}-${today.getFullYear()}`;
+  
   const blogObj = {
     title: blogHeading,
     description: blogDesc,
     image: blogImg,
     category: blogCategory,
-    date: new Date().toLocaleDateString(),
+    date: NewDate,
+    author:author
   };
 
   const handleSubmit = () => {
@@ -97,7 +106,8 @@ const AddBlog = () => {
               </label>
               <input
                 type="text"
-                onChange={(e) => setAuthor(e.target.value)}
+                onChange={handleAuthor}
+                required
                 placeholder="Enter author name..."
                 className="w-full px-5 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
               />
@@ -111,6 +121,7 @@ const AddBlog = () => {
               <input
                 type="text"
                 onChange={handleTitle}
+                required
                 placeholder="Enter your captivating blog title..."
                 className="w-full px-5 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
               />
@@ -124,6 +135,7 @@ const AddBlog = () => {
               <textarea
                 rows="6"
                 onChange={handleDesc}
+                required
                 placeholder="Write your amazing story here..."
                 className="w-full px-5 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition resize-none"
               ></textarea>
@@ -137,6 +149,7 @@ const AddBlog = () => {
               <input
                 type="url"
                 onChange={handleImg}
+                required
                 placeholder="Paste your image URL here (e.g., https://example.com/image.jpg)"
                 className="w-full px-5 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
               />
@@ -152,6 +165,7 @@ const AddBlog = () => {
               </label>
               <select
                 onChange={handleCategory}
+                required
                 className="w-full px-5 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
               >
                 <option value="">Select Category</option>
@@ -174,52 +188,6 @@ const AddBlog = () => {
               </button>
             </div>
           </form>
-
-          {/* Preview Section */}
-<div className="mt-14 border-t pt-8">
-  <h3 className="text-2xl font-bold text-gray-800 mb-5 text-center">
-    Live Preview ✨
-  </h3>
-
-  <div className="bg-gray-100 rounded-xl p-6 shadow-inner">
-    {/* Blog Header Info */}
-    <div className="flex items-center justify-end mb-4 text-sm text-gray-600">
-      <p>
-        🏷️ <span className="font-medium text-indigo-600">Technology</span>
-      </p>
-    </div>
-
-    {/* Blog Title */}
-    <h4 className="text-2xl font-bold text-indigo-700 mb-3">
-      Sample Blog Title
-    </h4>
-
-    {/* Blog Description */}
-    <p className="text-gray-700 leading-relaxed mb-5">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lorem
-      vel libero aliquet ultricies. Integer tincidunt iaculis mi, sed eleifend
-      justo. Duis non ligula non nunc malesuada interdum non nec velit.
-    </p>
-
-    {/* Blog Image */}
-    <img
-      src="https://via.placeholder.com/600x300"
-      alt="Preview"
-      className="rounded-xl w-full h-64 object-cover shadow-md mb-4"
-    />
-
-    {/* Footer Info */}
-    <div className="flex items-center justify-between text-sm text-gray-500">
-      <p>
-        ✍️ Written by <span className="font-medium text-gray-800">John Doe</span>
-      </p>
-      <p>
-        🕒 Published on <span className="font-medium text-gray-800">Oct 31, 2025</span>
-      </p>
-    </div>
-  </div>
-</div>
-
         </div>
       </section>
 

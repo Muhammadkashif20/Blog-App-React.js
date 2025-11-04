@@ -72,7 +72,7 @@ const AllBlogs = () => {
 
         {/* Blogs Grid */}
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {blogData.map((blog, index) => (
+          {blogData?.map((blog, index) => (
             <div
               key={index}
               className="bg-white shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl overflow-hidden hover:-translate-y-2"

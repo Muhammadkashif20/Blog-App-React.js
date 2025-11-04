@@ -30,6 +30,7 @@ const AddBlog = () => {
   const handleTitle = (e) => {
     setBlogTitle(e.target.value);
     console.log("blog-title=>", blogTitle);
+
   };
 
   const handleDesc = (e) => {
@@ -48,26 +49,28 @@ const AddBlog = () => {
   };
 
   // Funtionality to handle form submission
-  const blogObj = [
-    {
+  const blogObj = {
       title: blogHeading,
       description: blogDesc,
       image: blogImg,
       category: blogCategory,
-    },
-  ];
+    };
+  
 
   const handleSubmit = () => {
     console.log("BlogObject=>", blogObj);
-    const getBlogData = JSON.parse(localStorage.getItem("blogObj") || []);
+
+    const getBlogData = JSON.parse(localStorage.getItem("blogObj"));
     let newData=getBlogData.push(blogObj)
+
     const setBlogData = localStorage.setItem("blogObj",JSON.stringify(getBlogData));
     console.log("blog-data=>", getBlogData);
+  // Clear Input's
 
-    setBlogTitle("")
-    setCategory("")
-    setDescription("")
-    setImageUrl("")
+  setBlogTitle("");
+  setDescription("");
+  setImageUrl("");
+  setCategory("");
   };
 
   return (

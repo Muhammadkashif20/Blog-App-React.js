@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Spin } from "antd";
+import { message, Spin } from "antd";
 import Footer from "./Footer";
 
 const AddBlog = () => {
@@ -56,7 +56,7 @@ const AddBlog = () => {
   // Funtionality to handle form submission
   let today=new Date();
   let NewDate=`${today.getDate()}-${today.getMonth()+1}-${today.getFullYear()}`;
-  
+
   const blogObj = {
     title: blogHeading,
     description: blogDesc,
@@ -67,6 +67,10 @@ const AddBlog = () => {
   };
 
   const handleSubmit = () => {
+    if(!blogHeading || !blogDesc || !blogImg || !blogCategory || !author){
+      message.error("All fields are required!");
+      return;
+    }
     console.log("BlogObject=>", blogObj);
 
     const getBlogData = JSON.parse(localStorage.getItem("blogObj"));
@@ -83,6 +87,10 @@ const AddBlog = () => {
     setDescription("");
     setImageUrl("");
     setCategory("");
+    setAuthor("");
+
+<Alert ></Alert>
+
   };
 
   return (
@@ -180,7 +188,6 @@ const AddBlog = () => {
             {/* Publish Button */}
             <div className="text-center">
               <button
-                type="button"
                 onClick={handleSubmit}
                 className="px-10 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg cursor-pointer"
               >

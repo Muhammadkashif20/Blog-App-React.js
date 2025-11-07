@@ -89,7 +89,6 @@ const AddBlog = () => {
     setCategory("");
     setAuthor("");
 
-<Alert ></Alert>
 
   };
 

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { message, Spin } from "antd";
 import Footer from "./Footer";
-
 const AddBlog = () => {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [blogTitle, setBlogTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -15,18 +14,18 @@ const AddBlog = () => {
   let blogImg = imageUrl;
   let blogCategory = category;
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => setLoading(false), 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen bg-white">
-        <Spin size="large" />
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="flex items-center justify-center h-screen bg-white">
+  //       <Spin size="large" />
+  //     </div>
+  //   );
+  // }
 
   const handleAuthor = (e) => {
     setAuthor(e.target.value);
@@ -67,10 +66,13 @@ const AddBlog = () => {
   };
 
   const handleSubmit = () => {
-    if(!blogHeading || !blogDesc || !blogImg || !blogCategory || !author){
+
+    if(!blogTitle || !description || !imageUrl || !category || !author){
       message.error("All fields are required!");
       return;
     }
+    
+  
     console.log("BlogObject=>", blogObj);
 
     const getBlogData = JSON.parse(localStorage.getItem("blogObj"));
@@ -81,6 +83,9 @@ const AddBlog = () => {
       JSON.stringify(getBlogData)
     );
     console.log("blog-data=>", getBlogData);
+
+    message.success("Blog published successfully!");
+
     // Clear Input's
 
     setBlogTitle("");
